@@ -1,0 +1,297 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+} 
+
+/* Экран блокировки */
+#lockScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1e1e1e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#lockScreen input {
+  padding: 10px;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+#lockScreen button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#message {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+/* Анимация тряски */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Скрытое содержимое сайта */
+#content {
+  display: none;
+  padding: 20px; 
+}
+
+/* ======== Общие стили ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Общие стили */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+
+  /* 🎨 Общий смешанный градиентный фон */
+  background: linear-gradient(180deg, #000428 0%, #004e92 50%, #00c6ff 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #111;
+}
+
+/* Canvas — убираем фоновый цвет, чтобы не перекрывал общий */
+canvas#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: transparent;
+}
+
+/* Секции — делаем прозрачными, чтобы фон плавно просвечивал */
+section, header, footer {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.08); /* лёгкая прозрачность */
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Контейнер */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ======== Шапка (Hero) ======== */
+.hero {
+  padding: 5rem 0 3rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.subtitle {
+  color: #e5e5e5;
+  margin-bottom: 1rem;
+}
+
+.location {
+  color: #cce3ff;
+  font-size: 0.95rem;
+}
+
+.hero-photo img {
+  width: 220px;
+  height: 220px;
+  border-radius: 30px 60px;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.7);
+  display: block;
+  margin: 0 auto;
+}
+
+/* ======== Обо мне ======== */
+.about {
+  padding: 5rem 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-photo img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.about-text h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+  color: #e8e8e8;
+}
+
+.about-list {
+  list-style: none;
+  color: #cfe8ff;
+}
+
+.about-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* ======== Навыки ======== */
+.skills {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.skills h2 {
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.skills-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem; /* расстояние между иконками */
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.skills-grid img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Наведение */
+.skills-grid img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Индивидуальные цвета */
+.java_1 {
+  background: radial-gradient(circle at 30% 30%, #f7df1e, #d4b800);
+}
+
+.React {
+  background: radial-gradient(circle at 30% 30%, #61dafb, #007acc);
+}
+
+.figma {
+  background: radial-gradient(circle at 30% 30%, #a259ff, #f24e1e);
+}
+  
+
+
+
+/* ======== Опыт ======== */
+.about-photo{
+  margin-right: 200px;
+}
+
+.experience {
+  padding: 5rem 0;
+}
+
+.experience h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.exp-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.exp-card h3 span {
+  color: #00baff;
+}
+
+.date {
+  color: #cce3ff;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1rem;
+}
+
+/* ======== Подвал ======== */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: #cce3ff;
+  font-size: 0.9rem;
+}
+
+/* ======== Адаптив ======== */
+@media (max-width: 900px) {
+  .hero-grid, .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-photo img {
+    margin-top: 2rem;
+  }
+
+  .about-photo img {
+    max-width: 350px;
+    margin: 0 auto 2rem;
+    display: block;
+  }
+}
